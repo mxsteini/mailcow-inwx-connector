@@ -1,6 +1,3 @@
-const sp = require('synchronized-promise')
-
-
 module.exports = () => {
   let mailcowClient = {}
 

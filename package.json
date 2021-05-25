@@ -33,7 +33,6 @@
     "inquirer": "^8.1.0",
     "mailcow-api": "^1.2.6",
     "path": "^0.12.7",
-    "synchronized-promise": "^0.3.1",
     "yargs": "^16.2.0"
   }
 }
