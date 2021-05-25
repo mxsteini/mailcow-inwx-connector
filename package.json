@@ -1,7 +1,7 @@
 {
   "name": "mailcow-inwx-connector",
   "version": "1.0.0",
-  "description": "",
+  "description": "check dns entries at inwx and adjust them for mailcow requirements",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -27,9 +27,10 @@
   "homepage": "https://github.com/mxsteini/mailcow-inwx-connector#readme",
   "dependencies": {
     "arg": "^5.0.0",
+    "better-logging": "^4.5.0",
     "domrobot-client": "^3.0.2",
-    "dotenv": "^8.2.0",
-    "inquirer": "^8.0.0",
+    "dotenv": "^8.6.0",
+    "inquirer": "^8.1.0",
     "mailcow-api": "^1.2.6",
     "path": "^0.12.7",
     "synchronized-promise": "^0.3.1",

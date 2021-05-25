@@ -31,12 +31,11 @@ module.exports = () => {
           if (process.setup.content[recordName]) {
             content = process.setup.content[recordName]
           } else {
-            console.log('status: 35', 'Content for ' + recordName + ' is missing')
-          }
-          switch (recordName) {
-            case 'dkim':
-              content = dkim.dkim_txt
-              break
+            switch (recordName) {
+              case 'dkim':
+                content = dkim.dkim_txt
+                break
+            }
           }
           record.name = '_' + recordName + '._tcp'
           record.content = content
@@ -55,7 +54,7 @@ module.exports = () => {
       if (process.setup.ports[recordName]) {
         port = process.setup.ports[recordName]
       } else {
-        console.log('status: 35', 'Port for ' + recordName + ' is missing')
+        console.info('Port for ' + recordName + ' is missing')
       }
       record.name = '_' + recordName + '._tcp'
       record.content = process.setup.data.prio + ' ' + port + ' ' + process.setup.domains.mailserver.url
