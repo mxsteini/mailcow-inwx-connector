@@ -1,0 +1,60 @@
+{
+	"domains": {
+		"webserver": {
+			"a": "0.0.0.0",
+			"aaaa": "0.0.0.0"
+		},
+		"mailserver": {
+			"url": "mail.2au.de",
+			"a": "0.0.0.0",
+			"aaaa": ""
+		}
+	},
+	"ports": {
+		"pop3": 110,
+		"pop3s": 995,
+		"imap": 143,
+		"imaps": 993,
+		"smtps": 465,
+		"caldav": 443,
+		"carddav": 443,
+		"autodiscover": 443,
+		"submission": 587
+	},
+	"data": {
+		"spf": "v=spf1 mx ~all",
+		"dmarc": "v=DMARC1; p=reject; rua=mailto:michael@2au.de",
+		"dav": "path=/SOGo/dav/",
+		"ttl": 300,
+		"prio": 1
+	},
+	"content": {
+		"dmarc": "\"v=DMARC1; p=reject; rua=mailto:michael@2au.de\"",
+		"dkim": "",
+		"spf": "\"v=spf1 mx ~all\"",
+		"caldav": "\"path=/SOGo/dav/\"",
+		"carddav": "\"path=/SOGo/dav/\""
+	},
+	"dns_records":
+	{
+		"mail a": true,
+		"mail aaaa": true,
+		"autodiscover cname": true,
+		"autoconfig cname": true,
+		"mx": true,
+		"pop3_srv": true,
+		"pop3s_srv": true,
+		"imap_srv": true,
+		"imaps_srv": true,
+		"smtps_srv": true,
+		"submission_srv": true,
+		"autodiscover_srv": true,
+		"caldav_srv": true,
+		"carddav_srv": true,
+		"dmarc_txt": true,
+		"dkim_txt": true,
+		"spf_txt": true,
+		"caldav_txt": true,
+		"carddav_txt": true
+	}
+}
