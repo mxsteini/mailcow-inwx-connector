@@ -34,7 +34,7 @@ module.exports = () => {
                 break
             }
           }
-          record.name = '_' + recordName + '._tcp'
+          record.name = '_' + recordName + '._tcp.' + domainName
           record.content = content
           return record
         })
@@ -53,7 +53,7 @@ module.exports = () => {
       } else {
         console.info('Port for ' + recordName + ' is missing')
       }
-      record.name = '_' + recordName + '._tcp'
+      record.name = '_' + recordName + '._tcp.' + domainName
       record.content = process.setup.data.prio + ' ' + port + ' ' + process.setup.domains.mailserver.url
       return record
     },

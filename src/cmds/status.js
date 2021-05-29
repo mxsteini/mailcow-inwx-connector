@@ -8,6 +8,7 @@ exports.builder = {
 
 const config = require('../lib/config')()
 const computeRecords = require('../lib/computeRecords')()
+const dns = require('../lib/dns')()
 
 const { MailcowApiClient } = require('mailcow-api')
 const { ApiClient, Language } = require('domrobot-client')
@@ -30,13 +31,17 @@ exports.handler = async () => {
 
   let domains = await mcc.getDomain('all')
   domains.forEach(async (domain) => {
-    const domainCheckResponse = await apiClient.callApi('nameserver.info', { domain: domain.domain_name })
-    const records = []
-    if (domainCheckResponse.code !== 1000) {
+    if (!await dns.checkDomain(domain.domain_name, apiClient)) {
       console.warn(domain.domain_name + ' has no dns entry')
     } else {
       let desiredRecords = await computeRecords.getDesiredRecords(domain.domain_name)
-      console.log('status: 53', desiredRecords)
+      console.info(domain.domain_name)
+
+      const dnsRecords = await apiClient.callApi('nameserver.info', { domain: domain.domain_name })
+
+      // console.log(desiredRecords)
+      const records = dns.processRecords(desiredRecords, dnsRecords, apiClient)
+      console.table(records)
     }
   })
 

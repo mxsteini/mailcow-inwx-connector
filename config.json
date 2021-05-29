@@ -5,7 +5,7 @@
 			"aaaa": "0.0.0.0"
 		},
 		"mailserver": {
-			"url": "mail.2au.de",
+			"url": "mail.2au.de.",
 			"a": "0.0.0.0",
 			"aaaa": ""
 		}
@@ -25,7 +25,7 @@
 		"spf": "v=spf1 mx ~all",
 		"dmarc": "v=DMARC1; p=reject; rua=mailto:michael@2au.de",
 		"dav": "path=/SOGo/dav/",
-		"ttl": 300,
+		"ttl": 3600,
 		"prio": 1
 	},
 	"content": {
