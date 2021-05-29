@@ -40,7 +40,7 @@ exports.handler = async () => {
       const dnsRecords = await apiClient.callApi('nameserver.info', { domain: domain.domain_name })
 
       // console.log(desiredRecords)
-      const records = dns.processRecords(desiredRecords, dnsRecords, apiClient)
+      const records = await dns.processRecords(desiredRecords, dnsRecords, apiClient, true)
       console.table(records)
     }
   })
