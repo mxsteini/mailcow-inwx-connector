@@ -29,8 +29,7 @@ module.exports = () => {
         name: recordName + '.' + domainName,
         type: recordType.toUpperCase(),
         content: data[recordType],
-        ttl: process.setup.data.ttl,
-        prio: process.setup.data.prio
+        ttl: data.ttl
       }
     },
     computeTxtRecord (recordName, domainName) {

@@ -30,6 +30,10 @@ exports.builder = {
     alias: 'doAll',
     desc: 'create/update dns entry/record'
   },
+  'v': {
+    alias: 'verbose',
+    desc: 'more details'
+  },
   'd': {
     alias: 'domain',
     requiresArg: true,

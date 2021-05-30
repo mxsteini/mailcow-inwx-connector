@@ -22,10 +22,12 @@ module.exports = () => {
           record['name'] = found.name
           record.equal = check
           for (const key in desiredRecord) {
-            if (desiredRecord[key] !== found[key]) {
+            if (desiredRecord[key] !== found[key] || options.verbose) {
               record['mc_' + key] = (typeof desiredRecord[key] === 'string') ? desiredRecord[key].substring(0, 20) : desiredRecord[key]
               record['inwx_' + key] = (typeof found[key] === 'string') ? found[key].substring(0, 20) : found[key]
-              record.equal = cross
+              if (desiredRecord[key] !== found[key]) {
+                record.equal = cross
+              }
             }
           }
           if (record.equal == cross && (options.updateAll || options.updateRecord || options.doAll)) {
