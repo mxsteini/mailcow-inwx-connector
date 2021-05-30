@@ -37,10 +37,10 @@
 	},
 	"dns_records":
 	{
-		"mail a": true,
-		"mail aaaa": true,
-		"autodiscover cname": true,
-		"autoconfig cname": true,
+		"mail_a": true,
+		"mail_aaaa": true,
+		"autodiscover_cname": true,
+		"autoconfig_cname": true,
 		"mx": true,
 		"pop3_srv": true,
 		"pop3s_srv": true,

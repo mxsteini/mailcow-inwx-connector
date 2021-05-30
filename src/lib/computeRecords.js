@@ -16,6 +16,15 @@ module.exports = () => {
       }
       return records
     },
+
+    computeARecord (recordName, domainName) {
+      const records = []
+      return records
+    },
+    computeAaaaRecord (recordName, domainName) {
+      const records = []
+      return records
+    },
     computeTxtRecord (recordName, domainName) {
       return this.mailcowClient.getDKIM(domainName)
         .then(dkim => {
@@ -64,6 +73,10 @@ module.exports = () => {
           return this.computeTxtRecord(recordName, domainName)
         case 'srv':
           return this.computeSrvRecord(recordName, domainName)
+        case 'A':
+          return this.computeARecord(recordName, domainName)
+        case 'AAAA':
+          return this.computeAaaaRecord(recordName, domainName)
       }
     }
   }
