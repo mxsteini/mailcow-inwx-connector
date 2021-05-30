@@ -12,11 +12,13 @@ module.exports = () => {
         if (found) {
           let record = {}
           record.equal = '✓'
-          record['inwx_id'] = found.id
+          record['id'] = found.id
+          record['nane'] = found.name
           for (const key in desiredRecord) {
-            record['mc_' + key] = desiredRecord[key]
-            record['inwx_' + key] = found[key]
             if (desiredRecord[key] !== found[key]) {
+              // console.log('dns: 17', typeof desiredRecord[key])
+              record['mc_' + key] = (typeof desiredRecord[key] === 'string') ? desiredRecord[key].substring(0, 20) : desiredRecord[key]
+              record['inwx_' + key] = (typeof found[key] === 'string') ? found[key].substring(0, 20) : found[key]
               record.equal = '❌'
             }
           }

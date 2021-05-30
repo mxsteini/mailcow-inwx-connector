@@ -12,7 +12,7 @@ const dns = require('../lib/dns')()
 
 const { MailcowApiClient } = require('mailcow-api')
 const { ApiClient, Language } = require('domrobot-client')
-require('better-logging')(console)
+// require('better-logging')(console)
 
 exports.handler = async () => {
   config.init()
@@ -41,6 +41,7 @@ exports.handler = async () => {
 
       // console.log(desiredRecords)
       const records = await dns.processRecords(desiredRecords, dnsRecords, apiClient, true)
+      console.log(domain.domain_name)
       console.table(records)
     }
   })
