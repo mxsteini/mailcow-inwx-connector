@@ -1,0 +1,61 @@
+{
+  "_from": "mailcow-api",
+  "_id": "mailcow-api@1.2.6",
+  "_inBundle": false,
+  "_integrity": "sha512-nsGlMfsRu5cjbU6ws2i7wl/77L5+rtYxzL6OVXto3hPNFd4eXD/jfAonHCNB1HHt+gvuom2ddkTyXHtHHgyLtQ==",
+  "_location": "/mailcow-api",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "mailcow-api",
+    "name": "mailcow-api",
+    "escapedName": "mailcow-api",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/mailcow-api/-/mailcow-api-1.2.6.tgz",
+  "_shasum": "25ceec542dded352d8154fa68da89489c6d5669f",
+  "_spec": "mailcow-api",
+  "_where": "/home/mst/Projekte2/mailcow-inwx-connector",
+  "author": {
+    "name": "Paul Colin Hennig"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "node-fetch": "^2.6.1",
+    "randomstring": "^1.1.5"
+  },
+  "deprecated": false,
+  "description": "A wrapper for the mailcow wep API with the most relevant functions.",
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "eslint": "^7.13.0",
+    "jsdoc": "^3.6.6",
+    "jsdoc-to-markdown": "^6.0.1"
+  },
+  "homepage": "https://doc.y.gy/mailcow-api/",
+  "keywords": [
+    "mailcow",
+    "mail",
+    "api",
+    "wrapper",
+    "mailcowapi",
+    "mailcow-api",
+    "server",
+    "client"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "mailcow-api",
+  "repository": {
+    "type": "git",
+    "url": "http://git.y.gy/firstdorsal/mailcow-api.git"
+  },
+  "version": "1.2.6"
+}

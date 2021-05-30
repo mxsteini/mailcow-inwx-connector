@@ -1,6 +1,6 @@
 module.exports = () => {
   return {
-    async processRecords (desiredRecords, dnsRecords, inwx, dryRun = true) {
+    async processRecords (desiredRecords, dnsRecords, inwx, options) {
       const records = []
       for (const desiredRecord of desiredRecords) {
         let found = false
@@ -25,7 +25,7 @@ module.exports = () => {
           records.push(record)
         } else {
           console.warn('record ' + desiredRecord.name + ' not found')
-          if (!dryRun) {
+          if (options.createAll || options.createRecord) {
             desiredRecord.roId = dnsRecords.resData.roId
             const domainCheckResponse = await inwx.callApi('nameserver.createRecord', desiredRecord)
             if (domainCheckResponse.code !== 1000) {
