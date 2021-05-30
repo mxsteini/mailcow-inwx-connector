@@ -1,13 +1,11 @@
 {
 	"domains": {
-		"webserver": {
-			"a": "0.0.0.0",
-			"aaaa": "0.0.0.0"
+		"www": {
+			"a": "5.189.151.194"
 		},
-		"mailserver": {
-			"url": "mail.2au.de.",
-			"a": "0.0.0.0",
-			"aaaa": ""
+		"mail": {
+			"cname": "mail.2au.de",
+			"a": "5.189.136.69"
 		}
 	},
 	"ports": {
@@ -22,8 +20,12 @@
 		"submission": 587
 	},
 	"data": {
+		"a": "5.189.136.69",
+		"aaaa": "2a02:c207:3004:9049:0000:0000:0000:0002",
+		"cname": "mail.2au.de",
 		"spf": "v=spf1 mx ~all",
 		"dmarc": "v=DMARC1; p=reject; rua=mailto:michael@2au.de",
+		"mailserver": "mail.2au.de.",
 		"dav": "path=/SOGo/dav/",
 		"ttl": 3600,
 		"prio": 1
@@ -38,7 +40,6 @@
 	"dns_records":
 	{
 		"mail_a": true,
-		"mail_aaaa": true,
 		"autodiscover_cname": true,
 		"autoconfig_cname": true,
 		"mx": true,

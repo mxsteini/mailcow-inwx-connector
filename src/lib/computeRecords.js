@@ -16,14 +16,22 @@ module.exports = () => {
       }
       return records
     },
+    computeDomainRecord (recordName, domainName, recordType) {
+      const records = []
+      let data = []
+      for (let dataSet of [process.setup.data, process.setup.domains[recordName]]) {
+        for (let key in dataSet) {
+          data[key] = dataSet[key]
+        }
+      }
 
-    computeARecord (recordName, domainName) {
-      const records = []
-      return records
-    },
-    computeAaaaRecord (recordName, domainName) {
-      const records = []
-      return records
+      return {
+        name: recordName + '.' + domainName,
+        type: recordType.toUpperCase(),
+        content: data[recordType],
+        ttl: process.setup.data.ttl,
+        prio: process.setup.data.prio
+      }
     },
     computeTxtRecord (recordName, domainName) {
       return this.mailcowClient.getDKIM(domainName)
@@ -63,7 +71,7 @@ module.exports = () => {
         console.info('Port for ' + recordName + ' is missing')
       }
       record.name = '_' + recordName + '._tcp.' + domainName
-      record.content = process.setup.data.prio + ' ' + port + ' ' + process.setup.domains.mailserver.url
+      record.content = process.setup.data.prio + ' ' + port + ' ' + process.setup.data.mailserver
       return record
     },
 
@@ -73,10 +81,10 @@ module.exports = () => {
           return this.computeTxtRecord(recordName, domainName)
         case 'srv':
           return this.computeSrvRecord(recordName, domainName)
-        case 'A':
-          return this.computeARecord(recordName, domainName)
-        case 'AAAA':
-          return this.computeAaaaRecord(recordName, domainName)
+        case 'a':
+        case 'cname':
+        case 'aaaa':
+          return this.computeDomainRecord(recordName, domainName, recordType)
       }
     }
   }
