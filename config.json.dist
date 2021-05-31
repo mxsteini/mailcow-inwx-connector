@@ -1,11 +1,11 @@
 {
 	"domains": {
 		"www": {
-			"a": "5.189.151.194"
+			"a": "0.0.0.0"
 		},
 		"mail": {
-			"cname": "mail.2au.de",
-			"a": "5.189.136.69"
+			"cname": "mail.mailcow.de",
+			"a": "0.0.0.0"
 		}
 	},
 	"ports": {
@@ -20,18 +20,18 @@
 		"submission": 587
 	},
 	"data": {
-		"a": "5.189.136.69",
-		"aaaa": "2a02:c207:3004:9049:0000:0000:0000:0002",
+		"a": "0.0.0.0",
+		"aaaa": ":::::::",
 		"cname": "mail.2au.de",
 		"spf": "v=spf1 mx ~all",
-		"dmarc": "v=DMARC1; p=reject; rua=mailto:michael@2au.de",
+		"dmarc": "v=DMARC1; p=reject; rua=mailto:admin@mailcow.com",
 		"mailserver": "mail.2au.de.",
 		"dav": "path=/SOGo/dav/",
 		"ttl": 3600,
 		"prio": 1
 	},
 	"content": {
-		"dmarc": "\"v=DMARC1; p=reject; rua=mailto:michael@2au.de\"",
+		"dmarc": "v=DMARC1; p=reject; rua=mailto:admin@mailcow.com",
 		"dkim": "",
 		"spf": "\"v=spf1 mx ~all\"",
 		"caldav": "\"path=/SOGo/dav/\"",
@@ -39,6 +39,7 @@
 	},
 	"dns_records":
 	{
+		"www_a": true,
 		"mail_a": true,
 		"autodiscover_cname": true,
 		"autoconfig_cname": true,
