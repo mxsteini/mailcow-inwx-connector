@@ -43,7 +43,6 @@ module.exports = () => {
           }
         } else {
           record['name'] = desiredRecord.name
-          console.warn('record ' + desiredRecord.name + ' not found')
           record.comment = chalk.red('missing')
           if (options.createAll || options.createRecord || options.doAll) {
             desiredRecord.roId = dnsRecords.resData.roId
@@ -63,7 +62,7 @@ module.exports = () => {
     async checkDomain (domainName, inwx, dryRun = true) {
       const domainCheckResponse = await inwx.callApi('nameserver.info', { domain: domainName })
       if (domainCheckResponse.code !== 1000) {
-        console.warn(domainName + ' has no dns entry')
+        console.warn(chalk.red(domainName + ' has no dns entry'))
         return false
       }
       return true
