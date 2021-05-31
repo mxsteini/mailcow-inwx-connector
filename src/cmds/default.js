@@ -44,9 +44,9 @@ exports.builder = {
 
 const config = require('../lib/config')()
 const computeRecords = require('../lib/computeRecords')()
-const dns = require('../lib/dns')()
 const cTable = require('console.table')
 const chalk = require('chalk')
+const dns = require('../lib/dns')()
 
 const { MailcowApiClient } = require('../lib/mailcow-api/index')
 const { ApiClient, Language } = require('domrobot-client')
@@ -54,6 +54,7 @@ const { ApiClient, Language } = require('domrobot-client')
 
 exports.handler = async (options) => {
   config.init()
+  dns.init(options)
   // console.log('status: 16', process.setup.dns_records)
 
   // process.exit();
@@ -75,7 +76,7 @@ exports.handler = async (options) => {
       let desiredRecords = await computeRecords.getDesiredRecords(domain.domain_name)
       const dnsRecords = await apiClient.callApi('nameserver.info', { domain: domain.domain_name })
 
-      const records = await dns.processRecords(desiredRecords, dnsRecords, apiClient, options)
+      const records = await dns.processRecords(desiredRecords, dnsRecords, apiClient)
       console.table(records)
     }
     console.groupEnd()
