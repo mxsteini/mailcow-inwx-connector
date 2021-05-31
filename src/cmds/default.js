@@ -1,30 +1,14 @@
 exports.command = '*'
-exports.desc = 'get status from mailcow and inwx'
+exports.desc = 'get domains from mailcow and compare them against inwx'
 
 exports.builder = {
-  'n': {
+  'c': {
     alias: 'createRecord',
     desc: 'create record if not exist'
   },
-  'w': {
+  'u': {
     alias: 'updateRecord',
     desc: 'update record if not exist'
-  },
-  'e': {
-    alias: 'createEntry',
-    desc: 'create dns entry if not exist'
-  },
-  'g': {
-    alias: 'updateEntry',
-    desc: 'update dns entry if not exist'
-  },
-  'u': {
-    alias: 'updateAll',
-    desc: 'update dns entries and records'
-  },
-  'c': {
-    alias: 'createAll',
-    desc: 'update dns entry if not exist'
   },
   'a': {
     alias: 'doAll',
@@ -44,25 +28,23 @@ exports.builder = {
 
 const config = require('../lib/config')()
 const computeRecords = require('../lib/computeRecords')()
-const cTable = require('console.table')
+require('console.table')
 const chalk = require('chalk')
 const dns = require('../lib/dns')()
 
 const { MailcowApiClient } = require('../lib/mailcow-api/index')
 const { ApiClient, Language } = require('domrobot-client')
-// require('better-logging')(console)
 
 exports.handler = async (options) => {
   config.init()
   dns.init(options)
-  // console.log('status: 16', process.setup.dns_records)
 
-  // process.exit();
-
-  const apiClient = new ApiClient(ApiClient.API_URL_OTE, Language.EN, false)
+  const inwxTarget = (process.env.INWX_ENVIRONMENT === 'Production') ? ApiClient.API_URL_LIVE : ApiClient.API_URL_OTE
+  const apiClient = new ApiClient(inwxTarget, Language.EN, false)
   const loginResponse = await apiClient.login(process.env.INWX_USERNAME, process.env.INWX_PASSWORD, '')
   if (loginResponse.code !== 1000) {
-    console.error(`Api login error. Code: ${loginResponse.code}  Message: ${loginResponse.msg}`)
+    console.error(chalk.red(`Api login error. Code: ${loginResponse.code}  Message: ${loginResponse.msg}`))
+    process.exit()
   }
 
   const mcc = new MailcowApiClient(process.env.MAILCOW_API_BASEURL, process.env.MAILCOW_API_KEY)

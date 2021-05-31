@@ -67,12 +67,6 @@ module.exports = () => {
       const domainCheckResponse = await inwx.callApi('nameserver.info', { domain: domainName })
       if (domainCheckResponse.code !== 1000) {
         console.warn(chalk.red(domainName + ' has no dns entry'))
-        if (this.options.createAll || this.options.createEntry || this.options.doAll) {
-          console.log(chalk.green('just created'))
-        }
-        if (this.options.updateAll || this.options.updateEntry || this.options.doAll) {
-          console.log(chalk.green('just updated'))
-        }
         return false
       }
       return true
